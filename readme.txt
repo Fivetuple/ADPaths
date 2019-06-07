@@ -40,7 +40,7 @@ compare_features.m                       Display bar charts of features for the 
 
 ------------------------------------------------------------------------------------------------
 
-esig_shell.m                            Wrapper for esig, which must be installed using pip install esig.
+matlab_esig_shell.m                      Wrapper for esig, which must be installed using pip install esig.
 
 ------------------------------------------------------------------------------------------------
 
