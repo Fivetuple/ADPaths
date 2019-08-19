@@ -19,7 +19,9 @@ function create_training_set()
 
     clear;
     close all;
-
+ 
+    addpath('../../shared/code/common');
+    addpath('../../shared/code/util');
     
     % see tadpole_save_dataset for variable names           
     

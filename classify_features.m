@@ -26,6 +26,8 @@ function classify_features()
     clear;
     close all;
  
+    addpath('../../shared/code/common');
+    addpath('../../shared/code/util');
     
     % choose classification experiment
     dotrain = 1;

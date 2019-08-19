@@ -31,13 +31,16 @@ function plot_interactions()
     load('./data/training_set','sadrids','snlrids','smcirids');           
  
     % healthy set
-    fnstem =  '../docs/interaction_plots/figures/nl';
-    plot_features(snlrids,tpdata,fnstem,21); 
-
+    if 1
+        fnstem =  '../docs/interaction_plots/figures/nl';
+        plot_features(snlrids,tpdata,fnstem,21);         
+    end
+    
     % AD set
-    fnstem =  '../docs/interaction_plots/figures/ad';
-    plot_features(sadrids,tpdata,fnstem,21); 
-
+    if 1
+        fnstem =  '../docs/interaction_plots/figures/ad';
+        plot_features(sadrids,tpdata,fnstem,21); 
+    end 
     % MCI set
 %    fnstem =  '../docs/interaction_plots/figures/mci';
 %    plot_features(smcirids,tpdata,fnstem,true,21); 
@@ -80,11 +83,18 @@ function plot_features(ridsample,tpd,fnstem,sample_size)
 
         figure('visible','off');
 %        figure('visible','on');
-
+        daspect([0.55 1 1 ]);
         hold on;
 
         % plot hippocampus vs wholebrain
-        scatter(xval,yval,300,c1,'s','filled','Linewidth',3);
+%        xsval = [xval(1) xval(end) ];
+%        ysval = [yval(1) yval(end) ];
+        xsval = [xval(1)];
+        ysval = [yval(1)];
+        
+        scatter(xsval,ysval,500,c1,'s','filled','Linewidth',3);
+        set(gca,'XTick',[]);
+        set(gca,'YTick',[]);        
         set(gca,'XTickLabel',[]);
         set(gca,'YTickLabel',[]);        
         
@@ -92,29 +102,14 @@ function plot_features(ridsample,tpd,fnstem,sample_size)
 %             text(xval(k),yval(k),num2str(k),'FontSize',18);
 %         end
         
-        % draw path
+        % draw path       
         for ip = 1:numel(xval)-1
-            p1 = [xval(ip),yval(ip)];
-            p2 = [xval(ip+1),yval(ip+1)];
-            dp = p2-p1;
-%             if ip == numel(xval)-1
-%                 arrow_length=36;
-%             else
-%                 arrow_length=0;
-%             end
-%             arrow(p1,p2,20,'BaseAngle',90,'LineWidth',10,'Length',arrow_length);
-            q=quiver(p1(1),p1(2),dp(1),dp(2),0);
-            q.Color = 'k';
-            q.LineWidth = 10;
-            q.MaxHeadSize = 2;
-            q.AutoScale = 'off';
-            if ip == numel(xval)-1
-                q.ShowArrowHead = 'on';
-            else
-                q.ShowArrowHead = 'off';
-            end
+            x1 = [xval(ip),xval(ip+1)];
+            y1 = [yval(ip),yval(ip+1)];
+            plot(x1,y1,'k-','Linewidth',6);
         end
-
+        arrow3([x1(1) y1(1)],[x1(2) y1(2)],'k-',0.65,0.65);
+        
         % centre image
         ctx = min(xval) + 0.5*(max(xval) - min(xval));
         cty = min(yval) + 0.5*(max(yval) - min(yval));

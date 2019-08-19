@@ -21,6 +21,8 @@ function compare_features()
     clear;
     close all;
  
+    addpath('../../shared/code/common');
+    addpath('../../shared/code/util');
  
     c1 = [0.2 0.5 0.8];    % blue
     
@@ -34,10 +36,10 @@ function compare_features()
        
     if islog
         fn = './data/log_training_features';
-        fnoutstem = '../docs/plos_revision1/figures/compare_log_features';
+        fnoutstem = '../docs/plos_revision4/figures/compare_log_features';
     else
         fn = './data/training_features';
-        fnoutstem = '../docs/plos_revision1/figures/compare_features';
+        fnoutstem = '../docs/plos_revision4/figures/compare_features';
     end
     load(fn,'Xtrain_ad','Xtrain_nl','Xtrain_mci');
 
@@ -57,7 +59,7 @@ function compare_features()
     
     if 1
         ft = 17; % (hippocampus, wholebrain)
-        ylimits = [-0.0005 0.0026];
+        ylimits = [-0.001 0.0026];
         xlimits = [0 55];
         %ft = 5;  % wholebrain
         %ylimits = [-0.06 0.03];
@@ -71,8 +73,9 @@ function compare_features()
         bar(exes,'FaceColor',c1)       
         xlim(xlimits)        
         ylim(ylimits)        
+        set(gca,'Xtick',[])
         set(gca,'XTickLabel',[]);
-        ylabel('Area (h,w)','FontSize',16);
+        ylabel('area (h,w)','FontSize',12);
         %title('AD features');
         fn = [fnoutstem '.eps'];
         saveas(gcf,fn,'epsc');    

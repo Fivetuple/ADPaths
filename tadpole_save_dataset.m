@@ -21,7 +21,7 @@
 function tadpole_save_dataset()
 
  
-    %addpath('../../shared/code/common');
+    addpath('../../shared/code/common');
 
     tadpoleD1D2File = './data/TADPOLE_D1_D2.csv';     
     
@@ -75,7 +75,7 @@ function tadpole_save_dataset()
     cols = [cols1 cols2 cols3 cols4 cols5 cols6 cols7 cols8 cols9 cols10 cols11];
     
     % extra variables
-    fid = fopen('./data/vars.txt');
+    fid = fopen('vars.txt');
     c = textscan(fid,'%s','Delimiter','\n');
     fclose(fid);
 
