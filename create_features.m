@@ -11,7 +11,7 @@
 % Usage examples
 %
 %
-% (c) 2018 Paul Moore - moorep@maths.ox.ac.uk 
+% (c) 2019 Paul Moore - moorep@maths.ox.ac.uk 
 %
 % This software is provided 'as is' with no warranty or other guarantee of
 % fitness for the user's purpose.  Please let the author know of any bugs
