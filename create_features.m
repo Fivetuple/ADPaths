@@ -26,14 +26,16 @@ function create_features()
 
     clear;
     close all;
-
+ 
+    addpath('../../shared/code/common');
+    addpath('../../shared/code/util');
 
     % choose which features to create
-    create_training_features = 1;
-    create_test_features = 0;
+    create_training_features = 0;
+    create_test_features = 1;
 
     % use log signature
-    islog = 0;
+    islog = 1;
     if islog
         disp('Using log signature');
     else
